@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ARBModelStoreContainer" CdmEntityContainer="ARBEntities">
+    <EntitySetMapping Name="Araclars">
+      <EntityTypeMapping TypeName="ARBModel.Araclar">
+        <MappingFragment StoreEntitySet="Araclar">
+          <ScalarProperty Name="AracNo" ColumnName="AracNo" />
+          <ScalarProperty Name="AracFiyat" ColumnName="AracFiyat" />
+          <ScalarProperty Name="AracAdet" ColumnName="AracAdet" />
+          <ScalarProperty Name="AracMarka" ColumnName="AracMarka" />
+          <ScalarProperty Name="AracModel" ColumnName="AracModel" />
+          <ScalarProperty Name="AracYil" ColumnName="AracYil" />
+          <ScalarProperty Name="AracOzellik" ColumnName="AracOzellik" />
+          <ScalarProperty Name="AracMotor" ColumnName="AracMotor" />
+          <ScalarProperty Name="AracPaket" ColumnName="AracPaket" />
+          <ScalarProperty Name="AracRenk" ColumnName="AracRenk" />
+          <ScalarProperty Name="SubeNo" ColumnName="SubeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musterilers">
+      <EntityTypeMapping TypeName="ARBModel.Musteriler">
+        <MappingFragment StoreEntitySet="Musteriler">
+          <ScalarProperty Name="MusteriNo" ColumnName="MusteriNo" />
+          <ScalarProperty Name="MusteriAdSoyad" ColumnName="MusteriAdSoyad" />
+          <ScalarProperty Name="MusteriTelefon" ColumnName="MusteriTelefon" />
+          <ScalarProperty Name="MusteriYas" ColumnName="MusteriYas" />
+          <ScalarProperty Name="MusteriBakiye" ColumnName="MusteriBakiye" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subelers">
+      <EntityTypeMapping TypeName="ARBModel.Subeler">
+        <MappingFragment StoreEntitySet="Subeler">
+          <ScalarProperty Name="SubeNo" ColumnName="SubeNo" />
+          <ScalarProperty Name="SubeAdi" ColumnName="SubeAdi" />
+          <ScalarProperty Name="CalisanSayisi" ColumnName="CalisanSayisi" />
+          <ScalarProperty Name="SubeCiro" ColumnName="SubeCiro" />
+          <ScalarProperty Name="MusteriNo" ColumnName="MusteriNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kayits">
+      <EntityTypeMapping TypeName="ARBModel.Kayit">
+        <MappingFragment StoreEntitySet="Kayit">
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ARBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Araclar">
+    <Key>
+      <PropertyRef Name="AracNo" />
+    </Key>
+    <Property Name="AracNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AracFiyat" Type="money" />
+    <Property Name="AracAdet" Type="int" />
+    <Property Name="AracMarka" Type="varchar" MaxLength="50" />
+    <Property Name="AracModel" Type="varchar" MaxLength="50" />
+    <Property Name="AracYil" Type="int" />
+    <Property Name="AracOzellik" Type="varchar" MaxLength="50" />
+    <Property Name="AracMotor" Type="varchar" MaxLength="50" />
+    <Property Name="AracPaket" Type="varchar" MaxLength="50" />
+    <Property Name="AracRenk" Type="varchar" MaxLength="50" />
+    <Property Name="SubeNo" Type="int" />
+  </EntityType>
+  <EntityType Name="Kayit">
+    <Key>
+      <PropertyRef Name="KullaniciAdi" />
+    </Key>
+    <Property Name="KullaniciAdi" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sifre" Type="nchar" MaxLength="10" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" />
+    <Property Name="Telefon" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="MusteriNo" />
+    </Key>
+    <Property Name="MusteriNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MusteriAdSoyad" Type="varchar" MaxLength="50" />
+    <Property Name="MusteriTelefon" Type="varchar" MaxLength="50" />
+    <Property Name="MusteriYas" Type="int" />
+    <Property Name="MusteriBakiye" Type="money" />
+  </EntityType>
+  <EntityType Name="Subeler">
+    <Key>
+      <PropertyRef Name="SubeNo" />
+    </Key>
+    <Property Name="SubeNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubeAdi" Type="varchar" MaxLength="50" />
+    <Property Name="CalisanSayisi" Type="int" />
+    <Property Name="SubeCiro" Type="money" />
+    <Property Name="MusteriNo" Type="int" />
+  </EntityType>
+  <Association Name="FK_Araclar_Subeler">
+    <End Role="Subeler" Type="Self.Subeler" Multiplicity="0..1" />
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subeler">
+        <PropertyRef Name="SubeNo" />
+      </Principal>
+      <Dependent Role="Araclar">
+        <PropertyRef Name="SubeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subeler_Musteriler">
+    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+    <End Role="Subeler" Type="Self.Subeler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteriler">
+        <PropertyRef Name="MusteriNo" />
+      </Principal>
+      <Dependent Role="Subeler">
+        <PropertyRef Name="MusteriNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ARBModelStoreContainer">
+    <EntitySet Name="Araclar" EntityType="Self.Araclar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kayit" EntityType="Self.Kayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subeler" EntityType="Self.Subeler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Araclar_Subeler" Association="Self.FK_Araclar_Subeler">
+      <End Role="Subeler" EntitySet="Subeler" />
+      <End Role="Araclar" EntitySet="Araclar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subeler_Musteriler" Association="Self.FK_Subeler_Musteriler">
+      <End Role="Musteriler" EntitySet="Musteriler" />
+      <End Role="Subeler" EntitySet="Subeler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
